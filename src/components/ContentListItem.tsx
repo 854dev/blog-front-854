@@ -1,9 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 function ContentListItem() {
-  return (
-    <div>ContentListItem</div>
-  )
+  return <div>ContentListItem</div>;
 }
 
-export default ContentListItem
+export default ContentListItem;
