@@ -1,6 +1,6 @@
 export type contentMetaDate = string | null; // "2023-02-16T04:48:28.000Z",
 export type contentMetaStatus = 'draft' | 'publish';
-export type bodyFieldType = 'string' | 'number' | 'boolean' | 'text';
+export type schemaType = 'string' | 'number' | 'boolean' | 'text';
 export type ID = number;
 
 export interface PagedResponse<T = unknown> {
@@ -20,12 +20,14 @@ export interface ContentMeta {
 }
 
 export interface ContentBody {
-  bodyFieldId: ID; // 1
-  bodyFieldName: string; // 'article_main';
-  bodyFieldValue: string; // '<p>하이 헬로우</p>';
+  schemaId: ID; // 1
+  schemaValue: string; // '<p>하이 헬로우</p>';
 }
 
-export interface ContentBase<T = any> extends ContentMeta {}
+/** 프론트엔드 표시용 schemaName 추가된 ContentBody */
+export interface ContentBodyWithName extends ContentBody {
+  schemaName: string;
+}
 
 export interface ContentType {
   contentTypeId: ID;
@@ -33,12 +35,16 @@ export interface ContentType {
 }
 
 export interface ContentBodySchema {
-  id: ID;
+  schemaId: ID;
   contentTypeId: ID;
-  fieldType: bodyFieldType;
-  fieldName: string;
+  schemaType: schemaType;
+  schemaName: string;
 }
 
 export interface ContentTypeDetail extends ContentType {
   bodySchema: ContentBodySchema[];
+}
+
+export interface ContentDetail extends ContentMeta {
+  body: ContentBody[];
 }
