@@ -15,13 +15,6 @@ body.dark {
 }
 
 /* LAYOUT */
-/* 작은 디바이스에 대한 스타일 */
-@media (max-width: 320px) {
-  main {
-    min-width: 320px;
-    max-width: 720px;
-  }
-}
 
 /* 그 이상 디바이스에 대한 스타일 */
 @media (min-width: 320px) and (max-width: 720px) {
