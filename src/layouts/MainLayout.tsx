@@ -1,12 +1,14 @@
 import React, { PropsWithChildren } from 'react';
+import ToggleDarkMode from '../components/ToggleDarkMode';
 
 function MainLayout(props: PropsWithChildren) {
   return (
-    <main>
-      <section className='container flex flex-col items-center justify-center px-4 py-8 mx-auto lg:py-16 lg:flex-row'>
-        {props.children}
-      </section>
-    </main>
+    <div className='main-wrap'>
+      <main>
+        <ToggleDarkMode></ToggleDarkMode>
+        <section className='container'>{props.children}</section>
+      </main>
+    </div>
   );
 }
 
