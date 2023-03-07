@@ -10,12 +10,23 @@ export default function Home() {
 
       <div className='post-list'>
         <div className='card'>
-          <header>
+          <header className='justify-between is-vertical-align'>
             <h4>Card title</h4>
+            <div className='tag is-small'>Submit</div>
           </header>
-          <p>A nisi ullam ... cupiditate?</p>
+          <p className='description'>A nisi ullam ... cupiditate?</p>
           <footer className='is-right'>
-            <a className='button primary'>Submit</a>
+            <a className='button'>Cancel</a>
+          </footer>
+        </div>
+
+        <div className='card'>
+          <header className='justify-between is-vertical-align'>
+            <h4>Card title</h4>
+            <div className='tag is-small'>Submit</div>
+          </header>
+          <p className='description'>A nisi ullam ... cupiditate?</p>
+          <footer className='is-right'>
             <a className='button'>Cancel</a>
           </footer>
         </div>
