@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import ContentList from '../../components/blogPost/ContentList';
 import api from '../../api/api';
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const res = await api.content.getList({
     page: 1,
     limit: 10,
