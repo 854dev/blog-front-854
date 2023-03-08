@@ -1,3 +1,6 @@
+import { DateTime } from 'luxon';
+import { DATE_FORMAT } from './constant';
+
 export const toggleDarkMode = () => {
   const isContainDark = document.body.classList.contains('dark');
 
@@ -6,4 +9,8 @@ export const toggleDarkMode = () => {
   } else {
     document.body.classList.add('dark');
   }
+};
+
+export const parseDate = (dateString: string) => {
+  return DateTime.fromISO(dateString).toFormat(DATE_FORMAT);
 };
