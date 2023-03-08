@@ -1,10 +1,10 @@
 import React from 'react';
-import { toggleDarkMode } from '../util/util';
+import { toggleDarkMode } from '../common/util';
 
 function ToggleDarkMode() {
   return (
-    <button className='button outline' onClick={toggleDarkMode}>
-      D
+    <button className='outline' onClick={toggleDarkMode}>
+      toggleDarkMode
     </button>
   );
 }
