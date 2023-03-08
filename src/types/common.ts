@@ -9,6 +9,7 @@ export interface PagedResponse<T = unknown> {
 }
 
 export interface ContentMeta {
+  contentId: ID;
   contentTypeId: ID;
   contentTypeName: string;
   title: string;
