@@ -1,6 +1,8 @@
 import axios from 'axios';
 import React, { useEffect } from 'react';
 import api from '../../api/api';
+import ContentBody from '../../components/blogPost/ContentBody';
+import ContentMeta from '../../components/blogPost/ContentMeta';
 import { ContentDetail } from '../../types/common';
 
 export async function getStaticProps(context) {
@@ -27,15 +29,21 @@ export async function getStaticPaths() {
 }
 
 function Post(props: { contentDetail: ContentDetail }) {
-  // const getDetail = async () => {
-  //   const res = await api.content.getDetail(1);
-  // };
+  const { contentDetail } = props;
+  const { body } = contentDetail;
 
-  // useEffect(() => {
-  //   getDetail();
-  // }, []);
-
-  return <div>{JSON.stringify(props)}</div>;
+  return (
+    <>
+      <ContentMeta {...contentDetail} />
+      {body.map((elem) => {
+        return (
+          <>
+            <ContentBody key={elem.schemaId} {...elem} />
+          </>
+        );
+      })}
+    </>
+  );
 }
 
 export default Post;
