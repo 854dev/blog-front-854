@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 axios.defaults.baseURL = 'http://localhost:8080';
-axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('token');
+// axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('token');
 
 // 기본적으로 JSON으로 요청하도록 설정
 axios.defaults.headers.post['Content-Type'] = 'application/json';
