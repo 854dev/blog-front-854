@@ -1,24 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import ContentList from '../../components/blogPost/ContentList';
-import { ContentMeta } from '../../types/common';
 import api from '../../api/api';
 
-function PostIndex() {
-  const [contentList, setContentList] = useState<ContentMeta[]>([]);
+export async function getStaticProps() {
+  const res = await api.content.getList({
+    page: 1,
+    limit: 10,
+  });
 
-  const getContentList = async () => {
-    const res = await api.content.getList({
-      page: 1,
-      limit: 10,
-    });
-
-    setContentList(res.data);
+  return {
+    props: { contentList: res.data }, // will be passed to the page component as props
   };
+}
 
-  useEffect(() => {
-    getContentList();
-  }, []);
-
+function PostIndex({ contentList }) {
   return (
     <div>
       <ContentList contentList={contentList} />

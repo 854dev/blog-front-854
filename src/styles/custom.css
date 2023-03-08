@@ -43,18 +43,17 @@ body.dark {
 
 /* LAYOUT */
 /* 그 이상 디바이스에 대한 스타일 */
+
 /* @media (min-width: 768px) {
   main {
     width: 70rem;
   }
-}
-
-@media (max-width: 768px) {
-  main {
-    width: 100%;
-    max-width: 64rem;
-  }
 } */
+
+.main-wrap {
+  width: 100%;
+  max-width: 76.8rem;
+}
 
 /* UTILITIES */
 .justify-between {

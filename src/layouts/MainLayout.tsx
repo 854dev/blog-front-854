@@ -5,17 +5,18 @@ import ToggleDarkMode from '../components/ToggleDarkMode';
 function MainLayout(props: PropsWithChildren) {
   return (
     <>
-      <div className='row'>
-        <div className='col-3 bg-primary hide-xs hide-sm hide-md'>.col</div>
-        <div className='main-wrap col'>
-          <Navbar></Navbar>
-          <main>
-            <ToggleDarkMode></ToggleDarkMode>
-            <section className='container '>{props.children}</section>
-          </main>
-          <footer className='footer'></footer>
+      <div className='row is-full-width'>
+        <div className='is-full-width is-center'>
+          <div className='main-wrap'>
+            <Navbar></Navbar>
+            <main>
+              <section className='container'>{props.children}</section>
+            </main>
+            <footer className='footer'>
+              <ToggleDarkMode></ToggleDarkMode>
+            </footer>
+          </div>
         </div>
-        <div className='col-3 bg-primary hide-xs hide-sm hide-md'>.col</div>
       </div>
     </>
   );
