@@ -19,18 +19,27 @@
 :root {
   --color-white: #fff;
   --color-black: #000;
+  --color-black-33: #333;
   --color-gs-1: #e6e6e6;
   --color-gs-2: #d5d5d5;
   --color-gs-3: #7f7f7f;
   --color-gs-4: #262626;
-  --color-gs-5: #2a2a2a;
+  --color-gs-5: #111111;
   --color-primary: #ffd000;
   --color-error: #ea4f4f;
+
+  --spacing-1: 1rem;
+  --spacing-2: 2rem;
+  --spacing-3: 3rem;
+  --spacing-4: 4rem;
+
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
 }
 
 /* for light mode */
 body {
-  --bg-color: #e6e6e6;
+  --bg-color: var(--color-gs-1);
   --grid-maxWidth: 64rem; /* max container width 720 */
   --color-shadow: var(--color-grey);
   --color-border: var(--color-black);
@@ -38,14 +47,14 @@ body {
 }
 
 body.dark {
-  --bg-color: #333;
-  --bg-secondary-color: #262626;
-  --color-shadow: #ffffff;
+  --bg-color: var(--color-black-33);
+  --bg-secondary-color: var(--color-gs-4);
+  --color-shadow: var(--color-gs-5);
   --font-color: #f5f5f5;
   --color-grey: #bbb;
   --color-darkGrey: #888;
   --color-primary: #ffd000;
-  --color-border: var(--color-white);
+  --color-border: var(--color-gs-1);
 }
 
 /* COMPONENT */
@@ -57,13 +66,6 @@ body.dark {
 }
 
 /* LAYOUT */
-/* 그 이상 디바이스에 대한 스타일 */
-
-/* @media (min-width: 768px) {
-  main {
-    width: 70rem;
-  }
-} */
 
 .main-wrap {
   width: 100%;
@@ -71,13 +73,47 @@ body.dark {
 }
 
 .card {
-  border: 1px solid var(--color-border);
-  box-shadow: 0.4rem 0.4rem var(--color-shadow);
+  border: 2px solid var(--color-border);
+  background-color: var(--bg-secondary-color);
+  border-radius: 1.5em;
   margin-bottom: 4%;
+  box-shadow: 0.6rem 0.6rem var(--color-shadow);
+}
+
+.card:hover {
+  transition: all 0.2s ease-in-out;
+  border: 2px solid var(--color-primary);
+  transform: translateY(-2%);
+  opacity: 0.9;
 }
 
 /* UTILITIES */
 .justify-between {
   display: flex;
   justify-content: space-between;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.rounded {
+  border-radius: 25%;
+  display: inline-block;
+}
+
+.p-1 {
+  padding: var(--spacing-1);
+}
+
+.p-2 {
+  padding: var(--spacing-2);
+}
+
+.p-3 {
+  padding: var(--spacing-3);
+}
+
+.p-4 {
+  padding: var(--spacing-4);
 }
