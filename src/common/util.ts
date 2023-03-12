@@ -9,6 +9,7 @@ export const toggleDarkMode = () => {
   } else {
     document.body.classList.add('dark');
   }
+  return isContainDark;
 };
 
 export const parseDate = (dateString: string) => {
