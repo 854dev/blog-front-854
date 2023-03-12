@@ -12,6 +12,6 @@ export const toggleDarkMode = () => {
   return isContainDark;
 };
 
-export const parseDate = (dateString: string) => {
-  return DateTime.fromISO(dateString).toFormat(DATE_FORMAT);
+export const parseDate = (dateString: string, format?: string) => {
+  return DateTime.fromISO(dateString).toFormat(format ?? DATE_FORMAT);
 };
