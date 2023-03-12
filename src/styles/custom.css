@@ -65,6 +65,10 @@ body.dark {
   padding: 0 2rem 0 2rem;
 }
 
+.hero {
+  min-height: 50vh;
+}
+
 /* LAYOUT */
 
 .main-wrap {
