@@ -6,15 +6,15 @@ function ToggleDarkMode() {
   const [isDark, setIsDark] = useState(false);
 
   return (
-    <button
-      className='outline'
+    <span
+      className={`p-1 is-vertical-align`}
       onClick={() => {
         toggleDarkMode();
         setIsDark(!isDark);
       }}
     >
       <FontAwesomeIcon icon={isDark ? faMoon : faSun} />
-    </button>
+    </span>
   );
 }
 
