@@ -11,7 +11,7 @@ function ContentCard(props: ContentMeta) {
     <div className='cursor-pointer card' onClick={() => router.push(`posts/${contentId}`)}>
       <h4>{title}</h4>
       <span>{parseDate(createdAt)}</span>
-      <p className='description'>설명</p>
+      <p className='description'></p>
       <Link href={`posts/${contentId}`}></Link>
     </div>
   );
