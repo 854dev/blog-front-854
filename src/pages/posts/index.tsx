@@ -6,6 +6,7 @@ export async function getStaticProps() {
   const res = await api.content.getList({
     page: 1,
     limit: 50,
+    contentTypeId: 1,
   });
 
   return {

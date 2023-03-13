@@ -15,7 +15,7 @@ export async function getStaticProps(context) {
 }
 
 export async function getStaticPaths() {
-  const res = await api.content.getList({ page: 1, limit: 10 });
+  const res = await api.content.getList({ page: 1, limit: 10, contentTypeId: 1 });
 
   // Get the paths we want to pre-render based on posts
   const paths = res.data.data.map((post) => ({
