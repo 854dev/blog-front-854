@@ -6,11 +6,11 @@ import { useEffect } from 'react';
 
 function MyApp({ Component, pageProps }: AppProps) {
   // prefers-color-scheme 확인
-  useEffect(() => {
-    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      document.body.classList.add('dark');
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+  //     document.body.classList.add('dark');
+  //   }
+  // }, []);
 
   return (
     <>
