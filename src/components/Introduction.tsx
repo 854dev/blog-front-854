@@ -12,20 +12,19 @@ function Introduction(props: Props) {
 
   return (
     <motion.div
+      className='is-full-width'
       initial={{ opacity: 0, y: 0 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
+      transition={{ duration: 0.3 }}
       onAnimationComplete={() => {
         if (onAnimationComplete) {
           onAnimationComplete();
         }
       }}
     >
-      <div className='row'>
-        <div className='col-12'>
-          <h1>{title}</h1>
-          <p className='text-center'>{content}</p>
-        </div>
+      <div className='is-full-width'>
+        <h1 className='text-center'>{title}</h1>
+        <p className='text-center'>{content}</p>
       </div>
     </motion.div>
   );
