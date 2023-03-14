@@ -40,9 +40,10 @@
 /* font */
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
 
-/* body 태그에 noto sans korea 폰트를 적용 */
+/* body global */
 body {
   font-family: 'Noto Sans KR', sans-serif;
+  overflow-y: scroll; /* Show scrollbars */
 }
 
 /* for light mode */
@@ -82,8 +83,6 @@ body.dark {
 .main-wrap {
   width: 100%;
   max-width: 76.8rem;
-  /** for scroll bar */
-  min-height: 101vh;
 }
 
 .card {
