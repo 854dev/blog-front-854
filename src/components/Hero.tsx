@@ -38,12 +38,10 @@ function Hero() {
         animate={{ opacity: isPostShow ? 1 : 0, y: 0 }}
         transition={{ duration: 0.8 }}
       >
-        <div className='row'>
-          <div className='col-12'>
-            <h2>Recent Post</h2>
-            <ContentList contentList={recentPost} />
-            <Link href={'/posts'}>more</Link>
-          </div>
+        <div className='py-3'>
+          <h3 className='text-center'>Recent Post</h3>
+          <ContentList contentList={recentPost} />
+          <Link href={'/posts'}>more</Link>
         </div>
       </motion.div>
     </div>
