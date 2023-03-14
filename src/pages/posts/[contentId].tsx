@@ -37,9 +37,9 @@ function Post(props: { contentDetail: ContentDetail }) {
       <ContentMeta {...contentDetail} />
       {body.map((elem) => {
         return (
-          <>
-            <ContentBody key={elem.schemaId} {...elem} />
-          </>
+          <React.Fragment key={elem.schemaId}>
+            <ContentBody {...elem} />
+          </React.Fragment>
         );
       })}
     </>
