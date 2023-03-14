@@ -47,8 +47,8 @@ body {
 }
 
 body.dark {
-  --bg-color: var(--color-black-33);
-  --bg-secondary-color: var(--color-gs-4);
+  --bg-color: var(--color-gs-4);
+  --bg-secondary-color: var(--color-black-33);
   --color-shadow: var(--color-gs-5);
   --font-color: #f5f5f5;
   --color-grey: #bbb;
