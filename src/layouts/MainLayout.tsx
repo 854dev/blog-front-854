@@ -3,7 +3,7 @@ import Navbar from '../components/Navbar';
 
 function MainLayout(props: PropsWithChildren) {
   return (
-    <>
+    <div className='layout-wrap'>
       <div className='row is-full-width is-marginless'>
         <div className='is-full-width is-center'>
           <div className='main-wrap'>
@@ -15,7 +15,7 @@ function MainLayout(props: PropsWithChildren) {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

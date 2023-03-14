@@ -66,7 +66,7 @@ body.dark {
 }
 
 .hero {
-  min-height: 50vh;
+  flex-direction: column;
 }
 
 /* LAYOUT */
@@ -74,6 +74,8 @@ body.dark {
 .main-wrap {
   width: 100%;
   max-width: 76.8rem;
+  /** for scroll bar */
+  min-height: 101vh;
 }
 
 .card {
@@ -85,10 +87,18 @@ body.dark {
 }
 
 .card:hover {
-  transition: all 0.2s ease-in-out;
+  transition-property: transform box-shadow;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-in-out;
   border: 2px solid var(--color-primary);
-  transform: translateY(-2%);
+  transform: translateY(-1%);
   opacity: 0.9;
+}
+
+.card:active {
+  transition: all 0.1s ease-in-out;
+  transform: translate(0rem, 0.6rem);
+  box-shadow: 0rem 0rem var(--color-shadow);
 }
 
 /* UTILITIES */
