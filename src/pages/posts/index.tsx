@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import ContentList from '../../components/blogPost/ContentList';
 import api from '../../api/api';
+import Introduction from '../../components/IntroDuction';
 
 export async function getStaticProps() {
   const res = await api.content.getList({
@@ -17,6 +18,8 @@ export async function getStaticProps() {
 function PostIndex({ contentList }) {
   return (
     <div>
+      <Introduction title='Post' content='글, 배운것들'></Introduction>
+
       <ContentList contentList={contentList} />
     </div>
   );
