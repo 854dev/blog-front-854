@@ -1,9 +1,9 @@
-import axios from 'axios';
-import React, { useEffect } from 'react';
+import React from 'react';
 import api from '../../api/api';
 import ContentBody from '../../components/blogPost/ContentBody';
 import ContentMeta from '../../components/blogPost/ContentMeta';
 import { ContentDetail } from '../../types/common';
+import { motion } from 'framer-motion';
 
 export async function getStaticProps(context) {
   const contentId = context.params.contentId;
@@ -33,7 +33,11 @@ function Post(props: { contentDetail: ContentDetail }) {
   const { body } = contentDetail;
 
   return (
-    <>
+    <motion.div
+      initial={{ opacity: 0, y: 0 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4 }}
+    >
       <ContentMeta {...contentDetail} />
       {body.map((elem) => {
         return (
@@ -42,7 +46,7 @@ function Post(props: { contentDetail: ContentDetail }) {
           </React.Fragment>
         );
       })}
-    </>
+    </motion.div>
   );
 }
 
