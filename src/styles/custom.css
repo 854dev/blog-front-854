@@ -37,6 +37,14 @@
   -webkit-touch-callout: none;
 }
 
+/* font */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+
+/* body 태그에 noto sans korea 폰트를 적용 */
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
 /* for light mode */
 body {
   --bg-color: var(--color-gs-1);
