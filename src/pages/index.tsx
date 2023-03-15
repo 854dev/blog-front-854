@@ -1,4 +1,3 @@
-import Hero from '../components/Hero';
 import api from '../api/api';
 import PageIntro from '../components/PageIntro';
 import ContentList from '../components/blogPost/ContentList';
