@@ -7,7 +7,7 @@ type Props = {
   onAnimationComplete?: () => void;
 };
 
-function Introduction(props: Props) {
+function PageIntro(props: Props) {
   const { title, content, onAnimationComplete } = props;
 
   return (
@@ -30,4 +30,4 @@ function Introduction(props: Props) {
   );
 }
 
-export default Introduction;
+export default PageIntro;

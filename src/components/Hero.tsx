@@ -3,19 +3,19 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { ContentMeta } from '../types/common';
 import ContentList from './blogPost/ContentList';
-import Introduction from './IntroDuction';
+import PageIntro from './PageIntro';
 
 function Hero(props: { contentList: ContentMeta[] }) {
   const [isLogoMotionEnd, setisLogoMotionEnd] = useState(false);
   return (
     <div className='hero is-vertical-align is-horizontal-align'>
-      <Introduction
+      <PageIntro
         title='854 블로그'
         content='취미로 하는 블로그. 공부하고 기록하기'
         onAnimationComplete={() => {
           setisLogoMotionEnd(true);
         }}
-      ></Introduction>
+      ></PageIntro>
 
       <motion.div
         initial={{ opacity: 0, y: 0 }}
