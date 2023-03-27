@@ -7,20 +7,31 @@ import { motion } from 'framer-motion';
 
 export async function getStaticProps(context) {
   const contentId = context.params.contentId;
-  const res = await api.content.getDetail(contentId);
+
+  let contentDetail = [];
+
+  try {
+    const res = await api.content.getDetail(contentId);
+    contentDetail = res.data;
+  } catch {}
+
   return {
-    props: { contentDetail: res.data },
+    props: { contentDetail },
     revalidate: 10,
   };
 }
 
 export async function getStaticPaths() {
-  const res = await api.content.getList({ page: 1, limit: 10, contentTypeId: 1 });
+  let paths = [];
 
-  // Get the paths we want to pre-render based on posts
-  const paths = res.data.data.map((post) => ({
-    params: { contentId: post.contentId.toString() },
-  }));
+  try {
+    const res = await api.content.getList({ page: 1, limit: 10, contentTypeId: 1 });
+
+    // Get the paths we want to pre-render based on posts
+    paths = res.data.data.map((post) => ({
+      params: { contentId: post.contentId.toString() },
+    }));
+  } catch {}
 
   // We'll pre-render only these paths at build time.
   // { fallback: 'blocking' } will server-render pages

@@ -5,14 +5,19 @@ import { motion } from 'framer-motion';
 import { useState } from 'react';
 
 export async function getStaticProps() {
-  const res = await api.content.getList({
-    page: 1,
-    limit: 5,
-    contentTypeId: 1,
-  });
+  let contentList = [];
+
+  try {
+    const res = await api.content.getList({
+      page: 1,
+      limit: 5,
+      contentTypeId: 1,
+    });
+    contentList = res.data.data;
+  } catch {}
 
   return {
-    props: { contentList: res.data.data }, // will be passed to the page component as props
+    props: { contentList }, // will be passed to the page component as props
   };
 }
 
