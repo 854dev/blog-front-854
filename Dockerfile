@@ -20,7 +20,7 @@ RUN \
 FROM base AS builder
 WORKDIR /home/ubuntu/app/blog-front-854
 
-COPY --from=deps ./node_modules ./node_modules
+COPY --from=deps /home/ubuntu/app/blog-front-854/node_modules ./node_modules
 COPY . .
 # This will do the trick, use the corresponding env file for each environment.
 COPY .env-dev .env-prod
@@ -28,19 +28,19 @@ RUN yarn build
 
 # 3. Production image, copy all the files and run next
 FROM base AS runner
-WORKDIR /app
+WORKDIR /home/ubuntu/app/blog-front-854
 
 ENV NODE_ENV=production
 
 RUN addgroup -g 1001 -S nodejs
 RUN adduser -S nextjs -u 1001
 
-COPY --from=builder ./public ./public
+COPY --from=builder /home/ubuntu/app/blog-front-854/public ./public
 
 # Automatically leverage output traces to reduce image size
 # https://nextjs.org/docs/advanced-features/output-file-tracing
-COPY --from=builder --chown=nextjs:nodejs ./.next/standalone ./
-COPY --from=builder --chown=nextjs:nodejs ./.next/static ./.next/static
+COPY --from=builder --chown=nextjs:nodejs /home/ubuntu/app/blog-front-854/.next/standalone ./
+COPY --from=builder --chown=nextjs:nodejs /home/ubuntu/app/blog-front-854/.next/static ./.next/static
 
 USER nextjs
 
