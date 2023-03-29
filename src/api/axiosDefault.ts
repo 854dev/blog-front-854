@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-axios.defaults.baseURL = 'http://localhost:8080';
+axios.defaults.baseURL = process.env.NEXT_PUBLIC_API_URL;
 // axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('token');
 
 // 기본적으로 JSON으로 요청하도록 설정
