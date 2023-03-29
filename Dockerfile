@@ -23,7 +23,7 @@ WORKDIR /app/blog-front-854
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 # This will do the trick, use the corresponding env file for each environment.
-COPY .env.development.sample .env.production
+COPY .env-dev .env-prod
 RUN yarn build
 
 # 3. Production image, copy all the files and run next
