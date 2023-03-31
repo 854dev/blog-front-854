@@ -1,51 +1,58 @@
-FROM node:18-alpine AS base
-
-# Install dependencies only when needed
-FROM base AS deps
-# Check https://github.com/nodejs/docker-node/tree/b4117f9333da4138b03a546ec926ef50a31506c3#nodealpine to understand why libc6-compat might be needed.
-RUN apk add --no-cache libc6-compat
+FROM node:18-alpine
 
 WORKDIR /home/ubuntu/app/blog-front-854
- 
+
 # Install dependencies based on the preferred package manager
 COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml* ./
+# Omit --production flag for TypeScript devDependencies
 RUN \
   if [ -f yarn.lock ]; then yarn --frozen-lockfile; \
   elif [ -f package-lock.json ]; then npm ci; \
-  elif [ -f pnpm-lock.yaml ]; then yarn global add pnpm && pnpm i --frozen-lockfile; \
-  else echo "Lockfile not found." && exit 1; \
+  elif [ -f pnpm-lock.yaml ]; then yarn global add pnpm && pnpm i; \
+  # Allow install without lockfile, so example works even without Node.js installed locally
+  else echo "Warning: Lockfile not found. It is recommended to commit lockfiles to version control." && yarn install; \
   fi
 
-# 2. Rebuild the source code only when needed
-FROM base AS builder
-WORKDIR /home/ubuntu/app/blog-front-854
+COPY src ./src
+COPY public ./public
+COPY next.config.js .
+COPY tsconfig.json .
 
-COPY --from=deps /home/ubuntu/app/blog-front-854/node_modules ./node_modules
-COPY . .
-# This will do the trick, use the corresponding env file for each environment.
-COPY .env-dev .env-prod
-RUN yarn build
+# Environment variables must be present at build time
+# https://github.com/vercel/next.js/discussions/14030
+ARG ENV_VARIABLE
+ENV ENV_VARIABLE=${ENV_VARIABLE}
+ARG NEXT_PUBLIC_ENV_VARIABLE
+ENV NEXT_PUBLIC_ENV_VARIABLE=${NEXT_PUBLIC_ENV_VARIABLE}
+ARG POSTGRES_HOST
+ENV POSTGRES_HOST=${POSTGRES_HOST}
+ARG POSTGRES_PORT
+ENV POSTGRES_PORT=${POSTGRES_PORT}
+ARG POSTGRES_DATABASE
+ENV POSTGRES_DATABASE=${POSTGRES_DATABASE}
+ARG POSTGRES_USER
+ENV POSTGRES_USER=${POSTGRES_USER}
+ARG POSTGRES_PASSWORD
+ENV POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
 
-# 3. Production image, copy all the files and run next
-FROM base AS runner
-WORKDIR /home/ubuntu/app/blog-front-854
+# Next.js collects completely anonymous telemetry data about general usage. Learn more here: https://nextjs.org/telemetry
+# Uncomment the following line to disable telemetry at build time
+# ENV NEXT_TELEMETRY_DISABLED 1
 
-ENV NODE_ENV=production
+# Note: Don't expose ports here, Compose will handle that for us
 
-RUN addgroup -g 1001 -S nodejs
-RUN adduser -S nextjs -u 1001
+# Build Next.js based on the preferred package manager
+RUN \
+  if [ -f yarn.lock ]; then yarn build; \
+  elif [ -f package-lock.json ]; then npm run build; \
+  elif [ -f pnpm-lock.yaml ]; then pnpm build; \
+  else yarn build; \
+  fi
 
-COPY --from=builder /home/ubuntu/app/blog-front-854/public ./public
-
-# Automatically leverage output traces to reduce image size
-# https://nextjs.org/docs/advanced-features/output-file-tracing
-COPY --from=builder --chown=nextjs:nodejs /home/ubuntu/app/blog-front-854/.next/standalone ./
-COPY --from=builder --chown=nextjs:nodejs /home/ubuntu/app/blog-front-854/.next/static ./.next/static
-
-USER nextjs
-
-EXPOSE 80
-
-ENV PORT 80
-
-CMD ["yarn", "start"]
+# Start Next.js based on the preferred package manager
+CMD \
+  if [ -f yarn.lock ]; then yarn start; \
+  elif [ -f package-lock.json ]; then npm run start; \
+  elif [ -f pnpm-lock.yaml ]; then pnpm start; \
+  else yarn start; \
+  fi
