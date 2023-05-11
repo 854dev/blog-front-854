@@ -8,9 +8,9 @@ export async function getStaticProps() {
   let contentList = [];
 
   try {
-    const res = await api.content.getList({
+    const res = await api.content.getContentList({
       page: 1,
-      limit: 5,
+      limit: 10,
       contentTypeId: 1,
     });
     contentList = res.data.data;
@@ -27,8 +27,7 @@ export default function Home({ contentList }) {
   return (
     <div>
       <PageIntro
-        title='854 블로그'
-        content='취미로 하는 블로그. 공부하고 기록하기'
+        title='854 Blog'
         onAnimationComplete={() => {
           setisLogoMotionEnd(true);
         }}

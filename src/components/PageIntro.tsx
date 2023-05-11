@@ -3,7 +3,7 @@ import React from 'react';
 
 type Props = {
   title: React.ReactNode;
-  content: React.ReactNode;
+  content?: React.ReactNode;
   onAnimationComplete?: () => void;
 };
 
@@ -24,7 +24,7 @@ function PageIntro(props: Props) {
     >
       <div className='is-full-width'>
         <h1 className='text-center'>{title}</h1>
-        <p className='text-center'>{content}</p>
+        {content ? <p className='text-center'>{content}</p> : null}
       </div>
     </motion.div>
   );

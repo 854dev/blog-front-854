@@ -5,7 +5,7 @@ import PageIntro from '../../components/PageIntro';
 
 export async function getStaticProps() {
   try {
-    const res = await api.content.getList({
+    const res = await api.content.getContentList({
       page: 1,
       limit: 50,
       contentTypeId: 1,
@@ -24,7 +24,7 @@ export async function getStaticProps() {
 function PostIndex({ contentList }) {
   return (
     <div>
-      <PageIntro title='Post' content='글, 배운것들'></PageIntro>
+      <PageIntro title='Post'></PageIntro>
 
       <ContentList contentList={contentList} />
     </div>
