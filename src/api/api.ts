@@ -2,12 +2,20 @@ import axios from './axiosDefault';
 
 const api = {
   content: {
-    getList: (req) =>
+    getContentTypeList: (req) =>
+      axios({
+        url: 'content-type',
+        method: 'get',
+        params: req,
+      }),
+
+    getContentList: (req) =>
       axios({
         url: 'content',
         method: 'get',
         params: req,
       }),
+
     getDetail: (id) =>
       axios({
         url: `content/${id}`,
