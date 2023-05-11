@@ -4,28 +4,11 @@ import ContentList from '../components/blogPost/ContentList';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 
-export async function getStaticProps() {
-  let contentList = [];
-
-  try {
-    const res = await api.content.getContentList({
-      page: 1,
-      limit: 10,
-      contentTypeId: 1,
-    });
-    contentList = res.data.data;
-  } catch {}
-
-  return {
-    props: { contentList }, // will be passed to the page component as props
-  };
-}
-
-export default function Home({ contentList }) {
+export default function Home() {
   const [isLogoMotionEnd, setisLogoMotionEnd] = useState(false);
 
   return (
-    <div>
+    <>
       <PageIntro
         title='854 Blog'
         onAnimationComplete={() => {
@@ -39,9 +22,9 @@ export default function Home({ contentList }) {
       >
         <div className='py-3'>
           <h3 className='text-center'>Recent Post</h3>
-          {isLogoMotionEnd ? <ContentList contentList={contentList} /> : null}
+          {isLogoMotionEnd ? <ContentList contentList={[]} /> : null}
         </div>
       </motion.div>
-    </div>
+    </>
   );
 }

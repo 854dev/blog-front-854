@@ -16,9 +16,9 @@ const api = {
         params: req,
       }),
 
-    getDetail: (id) =>
+    getContentDetail: (req) =>
       axios({
-        url: `content/${id}`,
+        url: `content/${req.contentId}`,
         method: 'get',
       }),
   },

@@ -170,3 +170,11 @@ body.dark {
 .py-4 {
   padding: var(--spacing-4) 0 var(--spacing-4) 0;
 }
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
