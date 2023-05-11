@@ -12,8 +12,6 @@ export async function getServerSideProps(context) {
     contentId,
   });
 
-  console.log(res.data);
-
   return { props: { contentDetail: res.data ?? {} } };
 }
 
