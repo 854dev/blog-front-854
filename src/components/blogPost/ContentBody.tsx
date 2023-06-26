@@ -1,4 +1,5 @@
 import React from 'react';
+import Markdown from 'react-markdown';
 
 interface Props {
   key: string;
@@ -10,7 +11,10 @@ function ContentBody(props: Props) {
 
   return (
     <article className='container p-3' key={key}>
-      <section dangerouslySetInnerHTML={{ __html: value.toString() }}></section>
+      <section>
+        <Markdown children={value.toString()}></Markdown>
+      </section>
+      {/* <section dangerouslySetInnerHTML={{ __html: value.toString() }}></section> */}
     </article>
   );
 }
