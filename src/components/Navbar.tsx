@@ -2,6 +2,7 @@ import React, { PropsWithChildren } from 'react';
 import Link from 'next/link';
 import ToggleDarkMode from '../components/ToggleDarkMode';
 import { ContentType } from '../types/common';
+import Logo from './Logo';
 
 interface Props extends PropsWithChildren {
   contentTypeList: ContentType[];
@@ -14,7 +15,7 @@ function Navbar(props: Props) {
     <nav className='nav'>
       <div className='nav-left'>
         <Link href='/'>
-          <h1 className='text-primary'>854</h1>
+          <Logo />
         </Link>
 
         {contentTypeList.map((elem) => {
