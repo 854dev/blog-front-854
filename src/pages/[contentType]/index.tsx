@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import ContentList from '../../components/blogPost/ContentList';
 import api from '../../api/api';
 import PageIntro from '../../components/PageIntro';
 import { useRouter } from 'next/router';
 import { ContentMeta, ContentType } from '../../types/common';
+import FadeWithIndex from '../../components/motion/FadeWithIndex';
+import ContentItem from '../../components/blogPost/ContentItem';
+import Card from '../../components/card/Card';
 
 export async function getServerSideProps(context) {
   const { page = 1, limit = 50, contentType } = context.query;
@@ -29,8 +31,19 @@ function ContnentTypeIndex(props: Props) {
   return (
     <div>
       <PageIntro title={contentType}></PageIntro>
-
-      <ContentList contentList={contentList}></ContentList>
+      <div className='p-2 content-list row'>
+        {contentList.map((elem, idx) => {
+          return (
+            <div className='col-4' key={elem.contentId}>
+              <FadeWithIndex idx={idx}>
+                <Card>
+                  <ContentItem key={elem.contentId} {...elem} />
+                </Card>
+              </FadeWithIndex>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }
