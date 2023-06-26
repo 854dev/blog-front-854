@@ -77,9 +77,11 @@ body.dark {
   --bg-secondary-color: var(--color-black-33);
   --color-shadow: var(--color-gs-5);
   --font-color: var(--white-smoke);
-  --color-grey: #bbb;
-  --color-darkGrey: #888;
-  --color-border: var(--silver);
+  --font-color:var(--white-smoke);
+  --color-lightGrey:  var(--white-smoke);
+  --color-grey: var(--silver);
+  --color-darkGrey:  var(--battleship-gray);
+  --color-border: var(--black-33);
 }
 
 
@@ -119,9 +121,7 @@ body.dark {
 }
 
 .card:hover {
-  transition-duration: 0.2s;
-  transition-timing-function: ease-in-out;
-  border: 1px solid var(--color-primary);
+  filter: brightness(110%);
 }
 
 .card:active {
