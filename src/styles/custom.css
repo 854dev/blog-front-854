@@ -57,6 +57,10 @@
 /* font */
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
 
+a {
+  color:unset;
+}
+
 /* body global */
 body {
   font-family: 'Noto Sans KR', sans-serif;

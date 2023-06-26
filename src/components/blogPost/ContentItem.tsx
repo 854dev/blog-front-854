@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 import React from 'react';
 import { parseDate } from '../../common/util';
 import { ContentMeta } from '../../types/common';
@@ -7,14 +6,16 @@ import { ContentMeta } from '../../types/common';
 function ContentItem(props: ContentMeta) {
   const { title, createdAt, contentId } = props;
 
-  const router = useRouter();
   return (
-    <div className='cursor-pointer' onClick={() => router.push(`posts/${contentId}`)}>
-      <h4>{title}</h4>
-      <span>{parseDate(createdAt)}</span>
-      <p className='description'></p>
-      <Link href={`posts/${contentId}`}></Link>
-    </div>
+    <Link href={`posts/${contentId}`}>
+      <div className='cursor-pointer'>
+        <h4>
+          <b>{title}</b>
+        </h4>
+        <span className='text-color-grey'>{parseDate(createdAt)}</span>
+        <p className='description'></p>
+      </div>
+    </Link>
   );
 }
 
