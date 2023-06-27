@@ -1,5 +1,6 @@
 import React from 'react';
-import Markdown from 'react-markdown';
+import ReactMarkdown from 'react-markdown';
+import rehypeSlug from 'rehype-slug';
 
 interface Props {
   key: string;
@@ -10,9 +11,9 @@ function ContentBody(props: Props) {
   const { key, value } = props;
 
   return (
-    <article className='container' key={key}>
+    <article className='container'>
       <section>
-        <Markdown children={value.toString()}></Markdown>
+        <ReactMarkdown rehypePlugins={[rehypeSlug]}>{value.toString()}</ReactMarkdown>
       </section>
     </article>
   );
