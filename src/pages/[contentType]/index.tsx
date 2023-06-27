@@ -6,6 +6,7 @@ import { ContentMeta, ContentType } from '../../types/common';
 import FadeWithIndex from '../../components/motion/FadeWithIndex';
 import ContentItem from '../../components/blogPost/ContentItem';
 import Card from '../../components/card/Card';
+import Pagination from '../../components/Pagination';
 
 export async function getServerSideProps(context) {
   const { page = 1, limit = 12, contentType } = context.query;
@@ -16,17 +17,35 @@ export async function getServerSideProps(context) {
     contentTypeName: contentType,
   });
 
-  return { props: { contentList: res.data?.data ?? [] } };
+  return {
+    props: {
+      contentList: res.data?.data ?? [],
+      page: Number(page),
+      totalPage: res.data.totalPage,
+    },
+  };
 }
 
 interface Props {
+  page: number;
+  totalPage: number;
   contentList: ContentMeta[];
 }
 
 function ContnentTypeIndex(props: Props) {
   const router = useRouter();
   const { contentType } = router.query;
-  const { contentList } = props;
+  const { contentList, page: initPage, totalPage } = props;
+
+  const [page, setpage] = useState(Number(initPage));
+
+  const onChangePage = (page: number) => {
+    // 현재 URL에 쿼리스트링 붙이기
+    const current = new URL(window.location.href);
+    current.searchParams.delete('page');
+    current.searchParams.append('page', page.toString());
+    router.push(current);
+  };
 
   return (
     <div>
@@ -43,6 +62,13 @@ function ContnentTypeIndex(props: Props) {
             );
           })}
         </div>
+
+        <Pagination
+          totalPage={totalPage}
+          page={page ?? 1}
+          setPage={setpage}
+          onChange={onChangePage}
+        />
       </FadeWithIndex>
     </div>
   );

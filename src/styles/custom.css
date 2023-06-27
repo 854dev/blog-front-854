@@ -152,6 +152,11 @@ body.dark {
   text-transform: none;
 }
 
+.pagination {
+  display: flex;
+  justify-content: center;
+}
+
 /* UTILITIES */
 .justify-between {
   display: flex;
