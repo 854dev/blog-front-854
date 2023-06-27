@@ -29,7 +29,11 @@ const Pagination: React.FC<PaginationProps> = ({ totalPage, page, setPage, onCha
     <div className='pagination'>
       <div className='flex flex-row justify-between'>
         <div className='p-1'>
-          <button onClick={() => handleClick(page - 1)} disabled={page === 1}>
+          <button
+            className='button clear text-grey'
+            onClick={() => handleClick(page - 1)}
+            disabled={page === 1}
+          >
             prev
           </button>
         </div>
@@ -37,7 +41,7 @@ const Pagination: React.FC<PaginationProps> = ({ totalPage, page, setPage, onCha
         {pages.map((pageNum) => (
           <div className='p-1'>
             <button
-              className={`${pageNum === page ? 'bg-primary text-light' : 'text-grey'}`}
+              className={`${pageNum === page ? 'button secondary' : 'button clear text-light'}`}
               key={pageNum}
               onClick={() => handleClick(pageNum)}
             >
@@ -46,7 +50,11 @@ const Pagination: React.FC<PaginationProps> = ({ totalPage, page, setPage, onCha
           </div>
         ))}
         <div className='p-1'>
-          <button onClick={() => handleClick(page + 1)} disabled={page === totalPage}>
+          <button
+            className='button clear text-grey'
+            onClick={() => handleClick(page + 1)}
+            disabled={page === totalPage}
+          >
             next
           </button>
         </div>
