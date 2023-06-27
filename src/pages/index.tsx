@@ -8,7 +8,7 @@ import ContentItem from '../components/blogPost/ContentItem';
 import Card from '../components/card/Card';
 
 export async function getServerSideProps(context) {
-  const { page = 1, limit = 50, contentType = 'post' } = context.query;
+  const { page = 1, limit = 6, contentType = 'post' } = context.query;
 
   const res = await api.content.getContentList({
     page,
@@ -48,7 +48,7 @@ export default function Home(props: Props) {
               <div className='p-2 row'>
                 {contentList.map((elem, idx) => {
                   return (
-                    <div className='col-4' key={elem.contentId}>
+                    <div className='col-4-lg col-6-md col-12' key={elem.contentId}>
                       <Card>
                         <ContentItem key={elem.contentId} {...elem} />
                       </Card>
