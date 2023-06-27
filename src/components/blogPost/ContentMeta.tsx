@@ -3,12 +3,13 @@ import { parseDate } from '../../common/util';
 import { ContentMeta } from '../../types/common';
 
 function ContentMeta(props: ContentMeta) {
-  const { title, createdAt, contentId } = props;
+  const { title, createdAt, contentId, description } = props;
 
   return (
-    <div className='px-3'>
+    <div>
       <h1>{title}</h1>
-      <span>{parseDate(createdAt, 'yyyy.MM.dd hh:mm')}</span>
+      <p>{description}</p>
+      <span className='text-grey'>{parseDate(createdAt, 'yyyy.MM.dd hh:mm')}</span>
     </div>
   );
 }
