@@ -8,7 +8,7 @@ import ContentItem from '../../components/blogPost/ContentItem';
 import Card from '../../components/card/Card';
 
 export async function getServerSideProps(context) {
-  const { page = 1, limit = 50, contentType } = context.query;
+  const { page = 1, limit = 12, contentType } = context.query;
 
   const res = await api.content.getContentList({
     page,
@@ -31,19 +31,19 @@ function ContnentTypeIndex(props: Props) {
   return (
     <div>
       <PageIntro title={contentType}></PageIntro>
-      <div className='p-2 content-list row'>
-        {contentList.map((elem, idx) => {
-          return (
-            <div className='col-4' key={elem.contentId}>
-              <FadeWithIndex idx={idx}>
+      <FadeWithIndex idx={1}>
+        <div className='p-2 content-list row'>
+          {contentList.map((elem, idx) => {
+            return (
+              <div className='col-4' key={elem.contentId}>
                 <Card>
                   <ContentItem key={elem.contentId} {...elem} />
                 </Card>
-              </FadeWithIndex>
-            </div>
-          );
-        })}
-      </div>
+              </div>
+            );
+          })}
+        </div>
+      </FadeWithIndex>
     </div>
   );
 }
