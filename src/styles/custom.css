@@ -117,11 +117,11 @@ body.dark {
   box-shadow: 0.6rem 0.6rem var(--color-shadow);
 }
 
-.card:hover {
+.card.clickable:hover {
   filter: brightness(110%);
 }
 
-.card:active {
+.card.clickable:active {
   transition: all 0.1s ease-in-out;
   transform: translate(0rem, 0.6rem);
   box-shadow: 0rem 0rem var(--color-shadow);
