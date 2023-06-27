@@ -36,7 +36,7 @@ function ContnentTypeIndex(props: Props) {
           {contentList.map((elem, idx) => {
             return (
               <div className='col-4' key={elem.contentId}>
-                <Card>
+                <Card clickable>
                   <ContentItem key={elem.contentId} {...elem} />
                 </Card>
               </div>

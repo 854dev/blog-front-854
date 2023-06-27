@@ -49,7 +49,7 @@ export default function Home(props: Props) {
                 {contentList.map((elem, idx) => {
                   return (
                     <div className='col-4-lg col-6-md col-12' key={elem.contentId}>
-                      <Card>
+                      <Card clickable>
                         <ContentItem key={elem.contentId} {...elem} />
                       </Card>
                     </div>
