@@ -32,7 +32,7 @@ function ContnentTypeIndex(props: Props) {
     <div>
       <PageIntro title={contentType}></PageIntro>
       <FadeWithIndex idx={1}>
-        <div className='p-2 content-list row'>
+        <div className='p-2 row'>
           {contentList.map((elem, idx) => {
             return (
               <div className='col-4' key={elem.contentId}>
