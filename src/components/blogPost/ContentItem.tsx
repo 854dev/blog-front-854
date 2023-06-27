@@ -9,9 +9,9 @@ function ContentItem(props: ContentMeta) {
   return (
     <Link href={`posts/${contentId}`}>
       <div className='cursor-pointer'>
-        <h4>
+        <p>
           <b>{title}</b>
-        </h4>
+        </p>
         <span className='text-color-grey'>{parseDate(createdAt)}</span>
         <p className='description'></p>
       </div>
