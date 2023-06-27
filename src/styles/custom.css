@@ -129,7 +129,7 @@ body.dark {
 
 /** description 이 너무 길어지는걸 방지 */
 .content-item {
-  max-width: 280px;
+  max-width: 250px;
 }
 
 .content-item > .title {
