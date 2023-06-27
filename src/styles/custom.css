@@ -127,21 +127,26 @@ body.dark {
   box-shadow: 0rem 0rem var(--color-shadow);
 }
 
-/** description 이 너무 길어지는걸 방지 */
 .content-item {
+  /** description 이 너무 길어지는걸 방지 */
   max-width: 250px;
 }
 
-.content-item > .title {
-  white-space: nowrap;
-}
+.content-item > * {
+    /** 레이아웃 깨짐 방지 */
 
-.content-item > .description {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
+.tag {
+  border-radius: 3rem;
+  background-color: var(--color-lightGrey);
+  color: var(--color-darkGrey);
+  font-size: small;
+  text-transform: none;
+}
 
 /* UTILITIES */
 .justify-between {
