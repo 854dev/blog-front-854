@@ -1,6 +1,12 @@
 import axios from 'axios';
 
-axios.defaults.baseURL = process.env.NEXT_PUBLIC_API_URL;
+if (process.env.NEXT_PUBLIC_API_URL) {
+  console.log('NEXT_PUBLIC_API_URL', process.env.NEXT_PUBLIC_API_URL);
+  axios.defaults.baseURL = process.env.NEXT_PUBLIC_API_URL;
+} else {
+  axios.defaults.baseURL = 'https://studio854.blog/api/v1';
+}
+
 // axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('token');
 
 // 기본적으로 JSON으로 요청하도록 설정
