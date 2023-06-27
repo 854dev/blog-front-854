@@ -138,6 +138,13 @@ body.dark {
   white-space: nowrap;
 }
 
+.content-item > .description {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
 /* UTILITIES */
 .justify-between {
   display: flex;
