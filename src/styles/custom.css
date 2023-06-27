@@ -134,6 +134,10 @@ body.dark {
   box-shadow: 0rem 0rem var(--color-shadow);
 }
 
+.content-item > .title {
+  white-space: nowrap;
+}
+
 /* UTILITIES */
 .justify-between {
   display: flex;
