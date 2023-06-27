@@ -15,7 +15,6 @@ RUN \
 
 COPY . ./
 COPY src ./src
-COPY pages ./pages
 COPY public ./public
 
 # Environment variables must be present at build time
