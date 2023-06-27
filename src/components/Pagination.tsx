@@ -41,7 +41,7 @@ const Pagination: React.FC<PaginationProps> = ({ totalPage, page, setPage, onCha
         {pages.map((pageNum) => (
           <div className='p-1'>
             <button
-              className={`${pageNum === page ? 'button secondary' : 'button clear text-light'}`}
+              className={`${pageNum === page ? 'button secondary' : 'button clear text-grey'}`}
               key={pageNum}
               onClick={() => handleClick(pageNum)}
             >
