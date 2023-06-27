@@ -140,6 +140,10 @@ body.dark {
   text-overflow: ellipsis;
 }
 
+.tag-list {
+  min-height: 1.625rem;
+}
+
 .tag {
   border-radius: 3rem;
   background-color: var(--color-lightGrey);
