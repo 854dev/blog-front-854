@@ -39,24 +39,24 @@ export default function Home(props: Props) {
       <motion.div
         initial={{ opacity: 0, y: 0 }}
         animate={{ opacity: isLogoMotionEnd ? 1 : 0, y: 0 }}
-        transition={{ duration: 0.1 }}
+        transition={{ duration: 0.05 }}
       >
         <div className='py-3'>
           <h3 className='text-center'>Recent Post</h3>
           {isLogoMotionEnd ? (
-            <div className='p-2 row'>
-              {contentList.map((elem, idx) => {
-                return (
-                  <div className='col-4' key={elem.contentId}>
-                    <FadeWithIndex idx={idx}>
+            <FadeWithIndex idx={1}>
+              <div className='p-2 row'>
+                {contentList.map((elem, idx) => {
+                  return (
+                    <div className='col-4' key={elem.contentId}>
                       <Card>
                         <ContentItem key={elem.contentId} {...elem} />
                       </Card>
-                    </FadeWithIndex>
-                  </div>
-                );
-              })}
-            </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </FadeWithIndex>
           ) : null}
         </div>
       </motion.div>
