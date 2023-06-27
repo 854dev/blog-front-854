@@ -8,7 +8,7 @@ import ContentItem from '../components/blogPost/ContentItem';
 import Card from '../components/card/Card';
 
 export async function getServerSideProps(context) {
-  const { page = 1, limit = 6, contentType = 'post' } = context.query;
+  const { page = 1, limit = 6, contentType = 'Post' } = context.query;
 
   const res = await api.content.getContentList({
     page,
