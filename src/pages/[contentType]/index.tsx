@@ -7,6 +7,7 @@ import FadeWithIndex from '../../components/motion/FadeWithIndex';
 import ContentItem from '../../components/blogPost/ContentItem';
 import Card from '../../components/card/Card';
 import Pagination from '../../components/Pagination';
+import MetaHead from '../../components/MetaHead';
 
 export async function getServerSideProps(context) {
   const { page = 1, limit = 12, contentType } = context.query;
@@ -48,29 +49,33 @@ function ContnentTypeIndex(props: Props) {
   };
 
   return (
-    <div>
-      <PageIntro title={contentType}></PageIntro>
-      <FadeWithIndex idx={1}>
-        <div className='p-2 row'>
-          {contentList.map((elem, idx) => {
-            return (
-              <div className='col-4' key={elem.contentId}>
-                <Card clickable>
-                  <ContentItem key={elem.contentId} {...elem} />
-                </Card>
-              </div>
-            );
-          })}
-        </div>
+    <>
+      <MetaHead meta={{ title: contentType.toString() }} />
 
-        <Pagination
-          totalPage={totalPage}
-          page={page ?? 1}
-          setPage={setpage}
-          onChange={onChangePage}
-        />
-      </FadeWithIndex>
-    </div>
+      <div>
+        <PageIntro title={contentType}></PageIntro>
+        <FadeWithIndex idx={1}>
+          <div className='p-2 row'>
+            {contentList.map((elem, idx) => {
+              return (
+                <div className='col-4' key={elem.contentId}>
+                  <Card clickable>
+                    <ContentItem key={elem.contentId} {...elem} />
+                  </Card>
+                </div>
+              );
+            })}
+          </div>
+
+          <Pagination
+            totalPage={totalPage}
+            page={page ?? 1}
+            setPage={setpage}
+            onChange={onChangePage}
+          />
+        </FadeWithIndex>
+      </div>
+    </>
   );
 }
 ``;

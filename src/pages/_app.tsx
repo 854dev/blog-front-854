@@ -4,6 +4,7 @@ import '../styles/index.css';
 import MainLayout from '../layouts/MainLayout';
 import api from '../api/api';
 import { ContentType } from '../types/common';
+import MetaHead from '../components/MetaHead';
 
 interface Props extends AppProps {
   contentTypeList: ContentType[];
@@ -12,11 +13,9 @@ interface Props extends AppProps {
 function MyApp({ Component, pageProps, contentTypeList }: Props) {
   return (
     <>
-      <Head>
-        <title>NextJS TailwindCSS TypeScript Starter</title>
-        <meta name='viewport' content='initial-scale=1.0, width=device-width' />
-      </Head>
       <MainLayout contentTypeList={contentTypeList}>
+        <MetaHead />
+
         <Component {...pageProps} />
       </MainLayout>
     </>
