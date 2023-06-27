@@ -4,6 +4,7 @@ import ContentBody from '../../components/blogPost/ContentBody';
 import ContentMeta from '../../components/blogPost/ContentMeta';
 import { ContentDetail } from '../../types/common';
 import { motion } from 'framer-motion';
+import Card from '../../components/card/Card';
 
 export async function getServerSideProps(context) {
   const { contentId } = context.query;
@@ -21,11 +22,21 @@ function Post(props: { contentDetail: ContentDetail }) {
 
   return (
     <motion.div
+      className='px-2'
       initial={{ opacity: 0, y: 0 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4 }}
+      transition={{ duration: 0.1 }}
     >
-      <ContentMeta {...contentDetail} />
+      <Card>
+        <div className='p-2'>
+          <ContentMeta {...contentDetail} />
+        </div>
+      </Card>
+
+      <div className='py-2'>
+        <hr></hr>
+      </div>
+
       {Object.entries(body).map(([key, value]) => {
         return (
           <React.Fragment key={key}>
