@@ -20,8 +20,8 @@ COPY tsconfig.json .
 
 # Environment variables must be present at build time
 # https://github.com/vercel/next.js/discussions/14030
-ARG NEXT_PUBLIC_API_URL=http://localhost:8080
-ENV NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL}
+# ARG NEXT_PUBLIC_API_URL=http://localhost:8080
+# ENV NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL}
 # ARG ENV_VARIABLE
 # ENV ENV_VARIABLE=${ENV_VARIABLE}
 # ARG NEXT_PUBLIC_ENV_VARIABLE
