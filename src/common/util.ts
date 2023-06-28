@@ -22,15 +22,15 @@ export const META_TAG_BASE = {
   title: '854 Blog',
   description: '854의 블로그입니다. 코딩과 게임 관련 글을 올리고 있어요.',
   'og:type': 'website',
-  'og:url': metaImage.src,
+  'og:url': 'https://studio854.blog',
   'og:title': '854 Blog',
   'og:description': '854의 블로그입니다. 개발과 게임 관련 글을 올리고 있어요.',
-  'og:image': metaImage.src,
-  'twitter:card': metaImage.src,
+  'og:image': '/meta-image.png',
+  'twitter:card': '/meta-image.png',
   'twitter:url': 'https://studio854.blog',
   'twitter:title': '854 Blog',
   'twitter:description': '854의 블로그입니다. 개발과 게임 관련 글을 올리고 있어요.',
-  'twitter:image': metaImage.src,
+  'twitter:image': '/meta-image.png',
 };
 
 /** 동적으로 바꿀수 있는 메타태그 키값  */
