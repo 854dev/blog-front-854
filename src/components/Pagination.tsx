@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 
 interface PaginationProps {
@@ -39,10 +41,9 @@ const Pagination: React.FC<PaginationProps> = ({ totalPage, page, setPage, onCha
         </div>
 
         {pages.map((pageNum) => (
-          <div className='p-1'>
+          <div className='p-1' key={pageNum}>
             <button
               className={`${pageNum === page ? 'button secondary' : 'button clear text-grey'}`}
-              key={pageNum}
               onClick={() => handleClick(pageNum)}
             >
               {pageNum}

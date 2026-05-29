@@ -3,12 +3,11 @@ import ReactMarkdown from 'react-markdown';
 import rehypeSlug from 'rehype-slug';
 
 interface Props {
-  key: string;
   value: string | number;
 }
 
 function ContentBody(props: Props) {
-  const { key, value } = props;
+  const { value } = props;
 
   return (
     <article className='container'>

@@ -1,7 +1,8 @@
+'use client';
+
 import React, { useEffect, useState } from 'react';
 import { toggleDarkMode } from '../common/util';
-import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 function ToggleDarkMode() {
   const [isDark, setIsDark] = useState(false);
 
@@ -14,15 +15,17 @@ function ToggleDarkMode() {
   }, []);
 
   return (
-    <span
-      className={`p-1 is-vertical-align`}
+    <button
+      type='button'
+      className='button clear p-1 is-vertical-align'
+      aria-label='Toggle dark mode'
       onClick={() => {
         toggleDarkMode();
         setIsDark(!isDark);
       }}
     >
-      <FontAwesomeIcon icon={isDark ? faMoon : faSun} />
-    </span>
+      {isDark ? 'Dark' : 'Light'}
+    </button>
   );
 }
 

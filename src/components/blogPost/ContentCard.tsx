@@ -1,19 +1,17 @@
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 import React from 'react';
 import { parseDate } from '../../common/util';
 import { ContentMeta } from '../../types/common';
 function ContentCard(props: ContentMeta) {
-  const { title, createdAt, contentId } = props;
+  const { title, createdAt, contentId, contentTypeName } = props;
+  const href = contentTypeName && contentId ? `/${contentTypeName}/${contentId}` : '#';
 
-  const router = useRouter();
   return (
-    <div className='cursor-pointer card' onClick={() => router.push(`posts/${contentId}`)}>
+    <Link href={href} className='cursor-pointer card'>
       <h4>{title}</h4>
-      <span>{parseDate(createdAt)}</span>
+      <span>{createdAt ? parseDate(createdAt) : ''}</span>
       <p className='description'></p>
-      <Link href={`posts/${contentId}`}></Link>
-    </div>
+    </Link>
   );
 }
 

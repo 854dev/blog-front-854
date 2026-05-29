@@ -20,13 +20,13 @@ function Navbar(props: Props) {
 
         {contentTypeList.map((elem) => {
           return (
-            <Link href={`/${elem.contentTypeName}`}>
+            <Link href={`/${elem.contentTypeName}`} key={elem.contentTypeId}>
               <span className='capitalize'>{elem.contentTypeName}</span>
             </Link>
           );
         })}
 
-        <ToggleDarkMode></ToggleDarkMode>
+        <ToggleDarkMode />
       </div>
     </nav>
   );
